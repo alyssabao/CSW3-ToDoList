@@ -48,3 +48,10 @@ li {
     width: 30px;
     height: 30px;
 }
+
+.format {
+    color: white;
+    font-size: 14pt;
+    position: relative;
+    top: 10px;
+}

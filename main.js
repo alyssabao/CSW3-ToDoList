@@ -39,15 +39,6 @@ function removeItem(index) {
     showList(itemList)
 }
 
-// function doneTask(index) {
-//     if(itemList[index].isDone == true){
-//         itemList[index].isDone = false
-//     } else {
-//         itemList[index].isDone = true
-//     }
-//     console.log(itemList)
-// }
-
 function doneCheckbox(index) {
     if (itemList[index].isDone == true) {
         itemList[index].isDone = false
@@ -56,5 +47,14 @@ function doneCheckbox(index) {
     }
     showList(itemList)
     console.log(itemList)
+}
+
+let filterUndone = () => {
+    if(document.getElementById("showUndone").checked == true) {
+        let filteredList = itemList.filter(item => item.isDone == false)
+        showList(filteredList)
+    } else {
+        showList(itemList)
+    }
 }
 
