@@ -15,15 +15,15 @@ let showList = (list) => {
     let message = list.map((item, index) => {
         if (item.isDone == false) {
             return `<li>
-            <input type="checkbox" onchange="doneCheckbox(${index})" id="doneCheckbox${index}">
+            <input type="checkbox" onchange="doneCheckbox(${index})" id="doneCheckbox${index}" class="pos2">
             ${item.contents}
-            <button onclick="removeItem(${index})">Delete</button>
+            <button onclick="removeItem(${index})" class="btn btn-danger pos">Delete</button>
             </li>`
         } else {
             return `<li>
-            <input type="checkbox" checked onchange="doneCheckbox(${index})" id="doneCheckbox${index}">
+            <input type="checkbox" checked onchange="doneCheckbox(${index}) id="doneCheckbox${index}" class="pos2">
             <del>${item.contents}</del>
-            <button onclick="removeItem(${index})">Delete</button>
+            <button onclick="removeItem(${index})" class="btn btn-danger pos">Delete</button>
             </li>`
         }
         
@@ -57,5 +57,4 @@ function doneCheckbox(index) {
     showList(itemList)
     console.log(itemList)
 }
-
 
