@@ -1,4 +1,5 @@
 let itemList = []
+let previousList = []
 
 let addItem = () => {
     let toDo = {
@@ -8,6 +9,8 @@ let addItem = () => {
     itemList.push(toDo)
     showList(itemList)
     document.getElementById("itemInput").value = ''
+    document.getElementById("btn-add").disabled=true
+    save()
 }
 
 let showList = (list) => {
@@ -32,6 +35,7 @@ let showList = (list) => {
         
 
     document.getElementById("resultArea").innerHTML = message
+    save()
 }
 
 function removeItem(index) {
@@ -58,3 +62,31 @@ let filterUndone = () => {
     }
 }
 
+let save = () => {
+    localStorage.setItem("todo",JSON.stringify(itemList))
+}
+
+let loadData = () => {
+    previousList = JSON.parse(localStorage.getItem("todo"))
+    if(previousList.length  > 0){
+        itemList = previousList
+        showList(itemList)
+    } else {
+        itemList = []
+    }
+}
+
+function btnCheck() {
+    console.log("im here?")
+    let text=document.getElementById("itemInput")
+    console.log("hhh",text.value,"jjj",text.value.length)
+    if (text.value.length ==0 || text.value==null) {
+        console.log("9999")
+        document.getElementById("btn-add").disabled = true
+    } else {
+        console.log("haha")
+        document.getElementById("btn-add").disabled = false
+    }
+}
+
+loadData()
